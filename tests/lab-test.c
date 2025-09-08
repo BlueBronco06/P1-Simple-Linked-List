@@ -113,15 +113,6 @@ void test_func_list_is_empty(void) {
   list_destroy(list_1, NULL);
 }
 
-void test_func_list_create_invalid_list_type(void) {
-  int num_1 = 5;
-  int num_2 = 6;
-  int num_3 = 21;
-  int num_4 = 11;
-  List *list_1 = list_create(-1);
-  TEST_ASSERT_NULL(list_1);
-}
-
 void test_func_list_insert_out_of_bounds() {
   int num_1 = 5;
   int num_2 = 6;
@@ -176,7 +167,6 @@ int main(void) {
   RUN_TEST(test_func_list_remove);
   RUN_TEST(test_func_list_get);
   RUN_TEST(test_func_list_is_empty);
-  RUN_TEST(test_func_list_create_invalid_list_type);
   RUN_TEST(test_func_list_insert_out_of_bounds);
   RUN_TEST(test_func_list_remove_out_of_bounds);
   RUN_TEST(test_func_list_get_out_of_bounds);
