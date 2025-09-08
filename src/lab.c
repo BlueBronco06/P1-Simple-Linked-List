@@ -22,10 +22,17 @@ typedef struct List {
 List *list_create(ListType type) {
   // Create List Object
   List *list = malloc(sizeof(List));
+  if (!list) {
+    return NULL;
+  }
 
   if(type == LIST_LINKED_SENTINEL) {
     // Create senitnel Node
     Node *sentinelNode = malloc(sizeof(Node));
+    if (!sentinelNode) {
+      free(list);
+      return NULL;
+    }
 
     // Setup sentinel Node
     sentinelNode->data = NULL;
@@ -66,6 +73,9 @@ void list_destroy(List *list, FreeFunc free_func) {
 bool list_append(List *list, void *data) {
   // Initialize new node
   Node *newNode = malloc(sizeof(Node));
+  if (!newNode) {
+    return false;
+  }
   newNode->data = data;
 
   // Append new node  
@@ -92,6 +102,9 @@ bool list_insert(List *list, size_t index, void *data) {
   
   // Initialize node
   Node *newNode = malloc(sizeof(Node));
+  if (!newNode) {
+    return false;
+  }
 
   newNode->data = data;
 
