@@ -120,7 +120,6 @@ void test_func_list_create_invalid_list_type(void) {
   int num_4 = 11;
   List *list_1 = list_create(-1);
   TEST_ASSERT_NULL(list_1);
-  list_destroy(list_1, NULL);
 }
 
 void test_func_list_insert_out_of_bounds() {
