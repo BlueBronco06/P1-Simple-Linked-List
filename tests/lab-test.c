@@ -18,6 +18,7 @@ void test_func_list_create(void) {
   int num_3 = 4;
   List *list_1 = list_create(LIST_LINKED_SENTINEL);
   TEST_ASSERT_NOT_NULL(list_1);
+  list_destroy(list_1, NULL);
 }
 
 void test_func_list_destroy(void) {
@@ -39,6 +40,7 @@ void test_func_list_append(void) {
   list_append(list_1, &num_2);
   list_append(list_1, &num_3);
   TEST_ASSERT_EQUAL_INT(3, list_size(list_1));
+  list_destroy(list_1, NULL);
 }
 
 void test_func_list_insert(void) {
@@ -56,6 +58,7 @@ void test_func_list_insert(void) {
   list_insert(list_1, 0, &num_5);
   list_insert(list_1, 3, &num_6);
   TEST_ASSERT_EQUAL_INT(6, list_size(list_1));
+  list_destroy(list_1, NULL);
 }
 
 void test_func_list_remove(void) {
@@ -73,6 +76,7 @@ void test_func_list_remove(void) {
   list_remove(list_1, 1);
   list_remove(list_1, 3);
   TEST_ASSERT_EQUAL_INT(3, list_size(list_1));
+  list_destroy(list_1, NULL);
 }
 
 void test_func_list_get(void) {
@@ -91,6 +95,7 @@ void test_func_list_get(void) {
   int *value_2 = list_get(list_1, 3);
   TEST_ASSERT_EQUAL_INT(6, *value_1);
   TEST_ASSERT_EQUAL_INT(11, *value_2);
+  list_destroy(list_1, NULL);
 }
 
 void test_func_list_is_empty(void) {
@@ -105,6 +110,7 @@ void test_func_list_is_empty(void) {
   list_append(list_1, &num_3);
   list_append(list_1, &num_4);
   TEST_ASSERT_FALSE(list_is_empty(list_1));
+  list_destroy(list_1, NULL);
 }
 
 void test_func_list_create_invalid_list_type(void) {
@@ -114,6 +120,7 @@ void test_func_list_create_invalid_list_type(void) {
   int num_4 = 11;
   List *list_1 = list_create(-1);
   TEST_ASSERT_NULL(list_1);
+  list_destroy(list_1, NULL);
 }
 
 void test_func_list_insert_out_of_bounds() {
@@ -128,6 +135,7 @@ void test_func_list_insert_out_of_bounds() {
   list_append(list_1, &num_4);
   bool isSuccess = list_insert(list_1, 11, &num_4);
   TEST_ASSERT_FALSE(isSuccess);
+  list_destroy(list_1, NULL);
 }
 
 void test_func_list_remove_out_of_bounds() {
@@ -142,6 +150,7 @@ void test_func_list_remove_out_of_bounds() {
   list_append(list_1, &num_4);
   bool isSuccess = list_remove(list_1, 11);
   TEST_ASSERT_FALSE(isSuccess);
+  list_destroy(list_1, NULL);
 }
 
 void test_func_list_get_out_of_bounds() {
@@ -156,6 +165,7 @@ void test_func_list_get_out_of_bounds() {
   list_append(list_1, &num_4);
   bool isSuccess = list_get(list_1, 22);
   TEST_ASSERT_FALSE(isSuccess);
+  list_destroy(list_1, NULL);
 }
 
 int main(void) {
